@@ -11,7 +11,7 @@ interface Params {
 }
 
 interface Props {
-  params: Params
+  params: Promise<Params>
 }
 
 export async function generateStaticParams(): Promise<Params[]> {
@@ -20,8 +20,8 @@ export async function generateStaticParams(): Promise<Params[]> {
   return posts.map(post => ({ slug: post.slug }))
 }
 
-export async function generateMetadata(props: Promise<Props>) {
-  const { params } = await props
+export async function generateMetadata(props: Props) {
+  const params = await props.params
 
   const post = await getPost(params.slug)
 
@@ -35,8 +35,8 @@ export async function generateMetadata(props: Promise<Props>) {
   }
 }
 
-export default async function SinglePost(props: Promise<Props>) {
-  const { params } = await props
+export default async function SinglePost(props: Props) {
+  const params = await props.params
 
   const post = await getPost(params.slug)
 
