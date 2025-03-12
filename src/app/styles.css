@@ -1,0 +1,241 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary-50: var(--color-blue-50);
+  --color-primary-100: var(--color-blue-100);
+  --color-primary-200: var(--color-blue-200);
+  --color-primary-300: var(--color-blue-300);
+  --color-primary-400: var(--color-blue-400);
+  --color-primary-500: var(--color-blue-500);
+  --color-primary-600: var(--color-blue-600);
+  --color-primary-700: var(--color-blue-700);
+  --color-primary-800: var(--color-blue-800);
+  --color-primary-900: var(--color-blue-900);
+  --color-primary-950: var(--color-blue-950);
+}
+
+.md h1:not(.md > *:last-child),
+.md h2:not(.md > *:last-child),
+.md h3:not(.md > *:last-child),
+.md h4:not(.md > *:last-child),
+.md h5:not(.md > *:last-child),
+.md h6:not(.md > *:last-child),
+.md ul:not(.md > *:last-child),
+.md ol:not(.md > *:last-child),
+.md pre:not(.md > *:last-child),
+.md p:not(.md > *:last-child),
+.md blockquote:not(.md > *:last-child),
+.md dl:not(.md > *:last-child),
+.md dd:not(.md > *:last-child),
+.md table:not(.md > *:last-child) {
+  @apply mb-4;
+}
+
+.md li ol,
+.md li ul {
+  @apply mb-0;
+}
+
+.md hr,
+.md img {
+  @apply my-8;
+}
+
+.md hr {
+  @apply dark:border-gray-700;
+}
+
+.md h1,
+.md h2,
+.md h3,
+.md h4,
+.md h5,
+.md h6,
+.md dt,
+.md strong,
+.md th {
+  @apply font-semibold;
+}
+
+.md h1:not(.md > *:first-child),
+.md h2:not(.md > *:first-child),
+.md h3:not(.md > *:first-child),
+.md h4:not(.md > *:first-child),
+.md h5:not(.md > *:first-child),
+.md h6:not(.md > *:first-child) {
+  @apply mt-10;
+}
+
+.md h1 {
+  @apply text-3xl sm:text-4xl;
+}
+
+.md h2 {
+  @apply text-2xl sm:text-3xl;
+}
+
+.md h3 {
+  @apply text-xl sm:text-2xl;
+}
+
+.md h4 {
+  @apply text-lg sm:text-xl;
+}
+
+.md h5 {
+  @apply sm:text-lg;
+}
+
+.md h6 {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+.md ul,
+.md ol {
+  @apply pl-8;
+}
+
+.md ul {
+  @apply list-disc;
+}
+
+.md ol {
+  @apply list-decimal;
+}
+
+.md li:not(:last-child) {
+  @apply mb-1;
+}
+
+.md *:not(pre) code {
+  @apply rounded-sm bg-gray-100 text-sm dark:bg-gray-800 px-1.5 py-0.5;
+}
+
+.md pre {
+  @apply bg-gray-100 text-sm text-gray-800 overflow-auto py-4 dark:bg-gray-900 dark:text-gray-200 -mx-4 w-[calc(100%+2rem)] sm:mx-0 sm:w-full sm:rounded-md;
+}
+
+.md pre code {
+  @apply flex flex-col items-stretch p-0 min-w-fit;
+}
+
+.md .hljs-line-filename {
+  @apply pb-4;
+}
+
+.md .hljs-filename {
+  @apply inline-block text-xs rounded-full text-gray-500 dark:text-gray-400;
+}
+
+.md .hljs-line {
+  @apply px-4;
+}
+
+.md .hljs-line-addition,
+.md .hljs-line-deletion,
+.md .hljs-line-emphasis {
+  @apply relative before:absolute before:left-1 before:top-1/2 before:-translate-y-1/2 before:text-xs before:font-semibold;
+}
+
+.md .hljs-line-addition {
+  @apply relative bg-green-200/50 dark:bg-green-900/50 before:text-green-600 before:content-['+'];
+}
+
+.md .hljs-line-deletion {
+  @apply bg-rose-200/50 dark:bg-rose-900/50 before:text-rose-600 before:content-['-'];
+}
+
+.md .hljs-line-emphasis {
+  @apply bg-primary-200/50 dark:bg-primary-900/50;
+}
+
+.md .hljs-doctag,
+.md .hljs-keyword,
+.md .hljs-meta .hljs-keyword,
+.md .hljs-template-tag,
+.md .hljs-template-variable,
+.md .hljs-type {
+  @apply text-rose-700 dark:text-rose-400;
+}
+
+.md .hljs-title.class_ {
+  @apply text-orange-800 dark:text-orange-400;
+}
+
+.md .hljs-title,
+.md .hljs-title.function_ {
+  @apply text-violet-800 dark:text-violet-300;
+}
+
+.md .hljs-attr,
+.md .hljs-attribute,
+.md .hljs-literal,
+.md .hljs-meta,
+.md .hljs-number,
+.md .hljs-operator,
+.md .hljs-selector-attr,
+.md .hljs-selector-class,
+.md .hljs-selector-id {
+  @apply text-blue-700 dark:text-blue-300;
+}
+
+.md .hljs-meta .hljs-string,
+.md .hljs-regexp,
+.md .hljs-string {
+  @apply text-blue-900 dark:text-blue-200;
+}
+
+.md .hljs-built_in,
+.md .hljs-symbol {
+  @apply text-orange-600 dark:text-orange-400;
+}
+
+.md .hljs-code,
+.md .hljs-comment,
+.md .hljs-formula {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+.md .hljs-name,
+.md .hljs-quote,
+.md .hljs-selector-pseudo,
+.md .hljs-selector-tag {
+  @apply text-green-800 dark:text-green-300;
+}
+
+.md .hljs-subst {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.md p.error {
+  @apply gap-2 font-mono text-sm p-4 border-l-2 border-rose-500 bg-rose-100/50 text-rose-600 dark:border-rose-400 dark:text-rose-400 dark:bg-rose-900/25 -mx-4 w-[calc(100%+2rem)] sm:mx-0 sm:w-full;
+}
+
+.md a {
+  @apply text-primary-600 underline underline-offset-2 dark:text-primary-400;
+}
+
+.md blockquote {
+  @apply border-l-4 border-gray-300 text-gray-600 pl-4 dark:border-gray-700 dark:text-gray-400;
+}
+
+.md dd {
+  @apply ml-4;
+}
+
+.md img {
+  @apply w-full max-h-72 object-contain;
+}
+
+.md table {
+  @apply max-w-full;
+}
+
+.md th,
+.md td {
+  @apply border px-3 py-2 dark:border-gray-700;
+}
+
+.md tr {
+  @apply even:bg-gray-50 dark:even:bg-gray-900;
+}
