@@ -5,9 +5,9 @@ import Link from 'next/link'
 
 export function Avatar() {
   return (
-    <Link href="/">
+    <Link href="/" className="block rounded-full shrink-0">
       <Image
-        className="rounded-full shrink-0"
+        className="rounded-full"
         alt={info.name}
         src={rien}
         width="64"
