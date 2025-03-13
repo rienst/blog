@@ -4,5 +4,6 @@ export const info = {
   links: {
     LinkedIn: 'https://linkedin.com/in/rienstenekes',
     GitHub: 'https://github.com/rienst',
+    Source: 'https://github.com/rienst/blog',
   },
 }
