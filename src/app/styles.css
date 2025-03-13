@@ -242,7 +242,7 @@ h6:hover .heading-anchor-icon {
 }
 
 .md p.error {
-  @apply gap-2 font-mono text-sm p-4 border-l-2 border-rose-500 bg-rose-100/50 text-rose-600 dark:border-rose-400 dark:text-rose-400 dark:bg-rose-900/25 -mx-4 w-[calc(100%+2rem)] sm:mx-0 sm:w-full;
+  @apply gap-2 font-mono text-sm py-4 border-l-2 border-rose-500 bg-rose-100/50 text-rose-600 dark:border-rose-400 dark:text-rose-400 dark:bg-rose-900/25 -mx-6 px-6 w-[calc(100%+3rem)] sm:mx-0 sm:w-full sm:px-4;
 }
 
 .md a:not(.heading-anchor) {
