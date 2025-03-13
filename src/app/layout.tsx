@@ -2,13 +2,14 @@ import { info } from '@/info'
 import { Footer } from './footer'
 import { Header } from './header'
 import './styles.css'
+import { PropsWithChildren } from 'react'
 
 export const metadata = {
   title: info.name,
   description: info.description,
 }
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default function RootLayout(props: PropsWithChildren) {
   return (
     <html lang="en">
       <body className="dark:bg-gray-950 dark:text-white">
