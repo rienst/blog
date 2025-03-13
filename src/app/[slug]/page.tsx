@@ -3,6 +3,7 @@ import { formatDate } from '@/time'
 import { Title } from '../title'
 import { LowProfileLink } from '../low-profile-link'
 import { Avatar } from '../avatar'
+import { info } from '@/info'
 
 export const dynamicParams = false
 
@@ -26,10 +27,10 @@ export async function generateMetadata(props: Props) {
   const post = await getPost(params.slug)
 
   return {
-    title: `${post.title} · Rien Stenekes`,
+    title: `${post.title} · ${info.name}`,
     authors: [
       {
-        name: 'Rien Stenekes',
+        name: info.name,
       },
     ],
   }
@@ -58,7 +59,7 @@ export default async function SinglePost(props: Props) {
         <Avatar />
 
         <div className="grow">
-          <p>Written by Rien Stenekes</p>
+          <p>Written by {info.name}</p>
           <div className="flex gap-2 flex-wrap text-center text-sm text-gray-500 dark:text-gray-400">
             <LowProfileLink
               href="https://linkedin.com/in/rienstenekes"

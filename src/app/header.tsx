@@ -1,3 +1,4 @@
+import { info } from '@/info'
 import { Avatar } from './avatar'
 import { LowProfileLink } from './low-profile-link'
 
@@ -9,10 +10,10 @@ export function Header() {
 
         <div>
           <h1 className="text-lg font-semibold">
-            <LowProfileLink href="/">Rien Stenekes</LowProfileLink>
+            <LowProfileLink href="/">{info.name}</LowProfileLink>
           </h1>
 
-          <p className="text-sm">Software engineer from the Netherlands</p>
+          <p className="text-sm">{info.description}</p>
         </div>
       </div>
     </header>

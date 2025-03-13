@@ -1,10 +1,11 @@
+import { info } from '@/info'
 import { Footer } from './footer'
 import { Header } from './header'
 import './styles.css'
 
 export const metadata = {
-  title: 'Rien Stenekes',
-  description: 'Software engineer from the Netherlands.',
+  title: info.name,
+  description: info.description,
 }
 
 export default function RootLayout(props: { children: React.ReactNode }) {
