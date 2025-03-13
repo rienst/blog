@@ -1,10 +1,8 @@
 import { getAllPosts, getPost } from '@/posts'
 import { formatDate } from '@/time'
 import { Title } from '../title'
-import { LowProfileLink } from '../low-profile-link'
 import { Avatar } from '../avatar'
 import { info } from '@/info'
-import { StyledLink } from '../styled-link'
 
 export const dynamicParams = false
 
