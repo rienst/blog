@@ -6,21 +6,11 @@ export function Footer() {
     <footer className="flex flex-wrap gap-x-4 gap-y-2 text-center text-sm text-gray-500 dark:text-gray-400 ">
       <div>&copy; {info.name}</div>
 
-      <LowProfileLink
-        href="https://linkedin.com/in/rienstenekes"
-        target="_blank"
-        rel="noreferrer"
-      >
-        LinkedIn
-      </LowProfileLink>
-
-      <LowProfileLink
-        href="https://github.com/rienst"
-        target="_blank"
-        rel="noreferrer"
-      >
-        GitHub
-      </LowProfileLink>
+      {Object.entries(info.links).map(([key, value]) => (
+        <LowProfileLink key={key} href={value} target="_blank" rel="noreferrer">
+          {key}
+        </LowProfileLink>
+      ))}
     </footer>
   )
 }
