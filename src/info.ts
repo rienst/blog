@@ -1,4 +1,4 @@
 export const info = {
   name: 'Rien Stenekes',
-  description: 'Software engineer from the Netherlands',
+  description: 'Software Engineer — React, Node.js, AWS',
 }
