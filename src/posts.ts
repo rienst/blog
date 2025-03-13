@@ -3,6 +3,7 @@ import matter from 'gray-matter'
 import hljs from 'highlight.js'
 import { Marked, MarkedExtension } from 'marked'
 import { markedHighlight } from 'marked-highlight'
+import { highlight } from './highlight'
 
 export interface Post {
   title: string
@@ -27,49 +28,7 @@ export async function getPost(slug: string): Promise<Post> {
   const marked = new Marked(
     errorExtension,
     headingAnchorExtension,
-    markedHighlight({
-      highlight(code, lang) {
-        const languageName = lang.split('@')[0]
-        const fileName = lang.split('@')[1]
-
-        const language = hljs.getLanguage(languageName)
-          ? languageName
-          : 'plaintext'
-        const highlighted = hljs.highlight(code, { language }).value
-
-        const highlightedWithLines = highlighted
-          .split('\n')
-          .map(line => {
-            const keywordToHighlightMap: Record<string, string> = {
-              '+': 'addition',
-              '-': 'deletion',
-              '!': 'emphasis',
-            }
-
-            if (
-              line.match(
-                new RegExp(
-                  `^\\[[${Object.keys(keywordToHighlightMap).join('|\\')}]\\]`,
-                  'g'
-                )
-              )
-            ) {
-              return `<div class="hljs-line hljs-line-${
-                keywordToHighlightMap[line[1]]
-              }">${line.slice(3) || '\n'}</div>`
-            }
-
-            return `<div class="hljs-line">${line || '\n'}</div>`
-          })
-          .join('')
-
-        return `${
-          fileName
-            ? `<div class="hljs-line hljs-line-filename"><div class="hljs-filename">${fileName}</div></div>`
-            : ''
-        }${highlightedWithLines}`
-      },
-    })
+    markedHighlight({ highlight })
   )
 
   return {
