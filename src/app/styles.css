@@ -22,13 +22,16 @@
 .md h6:not(.md > *:last-child),
 .md ul:not(.md > *:last-child),
 .md ol:not(.md > *:last-child),
-.md pre:not(.md > *:last-child),
 .md p:not(.md > *:last-child),
 .md blockquote:not(.md > *:last-child),
 .md dl:not(.md > *:last-child),
 .md dd:not(.md > *:last-child),
 .md table:not(.md > *:last-child) {
   @apply mb-4;
+}
+
+.md pre:not(.md > *:last-child) {
+  @apply my-6;
 }
 
 .md li ol,
@@ -57,6 +60,15 @@
   @apply font-semibold;
 }
 
+.md h1,
+.md h2,
+.md h3,
+.md h4,
+.md h5,
+.md h6 {
+  @apply relative;
+}
+
 .md h1:not(.md > *:first-child),
 .md h2:not(.md > *:first-child),
 .md h3:not(.md > *:first-child),
@@ -64,6 +76,28 @@
 .md h5:not(.md > *:first-child),
 .md h6:not(.md > *:first-child) {
   @apply mt-10;
+}
+
+.heading-anchor {
+  @apply absolute block top-1/2 -left-5 -translate-y-1/2 pr-1 py-0.5 hover:underline sm:pr-2 sm:-left-6;
+}
+
+.heading-anchor-icon {
+  @apply block w-4 h-4 sm:opacity-0;
+}
+
+.heading-anchor:focus {
+  @apply underline;
+}
+
+.heading-anchor:focus .heading-anchor-icon,
+h1:hover .heading-anchor-icon,
+h2:hover .heading-anchor-icon,
+h3:hover .heading-anchor-icon,
+h4:hover .heading-anchor-icon,
+h5:hover .heading-anchor-icon,
+h6:hover .heading-anchor-icon {
+  @apply opacity-100;
 }
 
 .md h1 {
@@ -112,7 +146,7 @@
 }
 
 .md pre {
-  @apply bg-gray-100 text-sm text-gray-800 overflow-auto py-4 dark:bg-gray-900 dark:text-gray-200 -mx-4 w-[calc(100%+2rem)] sm:mx-0 sm:w-full sm:rounded-md;
+  @apply bg-gray-100 text-sm text-gray-800 overflow-auto py-4 dark:bg-gray-900 dark:text-gray-200 -mx-6 w-[calc(100%+3rem)] sm:mx-0 sm:w-full sm:rounded-md;
 }
 
 .md pre code {
@@ -128,7 +162,7 @@
 }
 
 .md .hljs-line {
-  @apply px-4;
+  @apply px-6 sm:px-4;
 }
 
 .md .hljs-line-addition,
@@ -211,7 +245,7 @@
   @apply gap-2 font-mono text-sm p-4 border-l-2 border-rose-500 bg-rose-100/50 text-rose-600 dark:border-rose-400 dark:text-rose-400 dark:bg-rose-900/25 -mx-4 w-[calc(100%+2rem)] sm:mx-0 sm:w-full;
 }
 
-.md a {
+.md a:not(.heading-anchor) {
   @apply text-primary-600 underline underline-offset-2 dark:text-primary-400;
 }
 
