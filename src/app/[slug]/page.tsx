@@ -4,6 +4,7 @@ import { Title } from '../title'
 import { LowProfileLink } from '../low-profile-link'
 import { Avatar } from '../avatar'
 import { info } from '@/info'
+import { StyledLink } from '../styled-link'
 
 export const dynamicParams = false
 
@@ -60,23 +61,9 @@ export default async function SinglePost(props: Props) {
 
         <div className="grow">
           <p>Written by {info.name}</p>
-          <div className="flex gap-2 flex-wrap text-center text-sm text-gray-500 dark:text-gray-400">
-            <LowProfileLink
-              href="https://linkedin.com/in/rienstenekes"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </LowProfileLink>
-            <span>&middot;</span>
-            <LowProfileLink
-              href="https://github.com/rienst"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </LowProfileLink>
-          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            {info.description}
+          </p>
         </div>
       </div>
     </main>
