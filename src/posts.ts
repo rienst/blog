@@ -1,6 +1,5 @@
 import { readFile, readdir } from 'fs/promises'
 import matter from 'gray-matter'
-import hljs from 'highlight.js'
 import { Marked, MarkedExtension } from 'marked'
 import { markedHighlight } from 'marked-highlight'
 import { highlight } from './highlight'
