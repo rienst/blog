@@ -250,7 +250,7 @@ h6:hover .heading-anchor-icon {
 }
 
 .md blockquote {
-  @apply border-l-4 border-gray-300 text-gray-600 pl-4 dark:border-gray-700 dark:text-gray-400;
+  @apply border-l-4 border-gray-300 text-gray-600 pl-3 dark:border-gray-700 dark:text-gray-400;
 }
 
 .md dd {
