@@ -79,7 +79,31 @@
 }
 
 .heading-anchor {
-  @apply absolute block top-1/2 -left-5 -translate-y-1/2 pr-1 py-3 hover:underline sm:pr-2 sm:-left-6;
+  @apply absolute block -left-5 pr-1 hover:underline sm:pr-2 sm:-left-6;
+}
+
+h1 .heading-anchor {
+  @apply py-3 sm:py-3.5;
+}
+
+h2 .heading-anchor {
+  @apply py-2.5 sm:py-3;
+}
+
+h3 .heading-anchor {
+  @apply py-2 sm:py-2.5;
+}
+
+h4 .heading-anchor {
+  @apply py-1.5 sm:py-2;
+}
+
+h5 .heading-anchor {
+  @apply py-1 sm:py-1.5;
+}
+
+h6 .heading-anchor {
+  @apply py-1 sm:py-1;
 }
 
 .heading-anchor-icon {
