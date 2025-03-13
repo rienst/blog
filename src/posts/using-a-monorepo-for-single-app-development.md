@@ -34,7 +34,7 @@ This tells npm that this package is actually a workspace root package and that s
 }
 ```
 
-> All dependencies of all packages inside the workspace will be installed in the top-level `node_modules` directory.
+> I like to use the `@root-package/` prefix in the package name to make it clear that this package is part of our monorepo.
 
 We have now created a monorepo, which is useful if we have multiple applications and we want to share some common logic between them. We can create packages for the specific applications we are building, as well as for the logic we wish to share between them.
 
@@ -190,6 +190,8 @@ Let's look at the dependency structure, which is the most important part of this
 }
 ```
 
+> Again: The `@my-app/` prefix is used to make it clear that this package is part of our monorepo.
+
 And indeed, this would be the `package.json` for `users`, specifying a dependency only on `@my-app/db`:
 
 ```json@my-app/packages/users/package.json
@@ -209,4 +211,4 @@ Cannot find module '@my-app/db' or its corresponding type declarations.
 
 ## Conclusion
 
-A monorepo helps you share logic when you're building multiple apps, but it can also be a useful tool for managing dependencies in your codebase. Splitting logic into separate packages helps you see the different parts that make up your app, and keeps you from tangling them up acidentally.
+A monorepo helps you share logic when you're building multiple apps, but it can also be a useful tool for managing dependencies in your codebase. Splitting logic into separate packages helps you see the different parts that make up your app and keeps you from tangling them up acidentally.
