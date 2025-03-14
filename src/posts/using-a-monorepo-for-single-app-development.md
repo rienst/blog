@@ -147,9 +147,9 @@ export async function createUserFormHandler(formData: FormData) {
 }
 ```
 
-Oops, this form handler calls `userDb.createUser` without first validating the users name. The problem is that we have no way of managing which files can access which. We can just import anything we need, wherever we need it. This dramatically increases the the chances for the project to become a 'big ball of mud'.
+Oops, this form handler calls `userDb.createUser` without first validating the users name. The underlaying problem here is that we have no way of managing which files can access which. We can just import anything we need, wherever we need it. This dramatically increases the the chances for the project to become a 'big ball of mud'.
 
-What we need are tools to specify which files can import which other files, and prevent us from accidentally importing them anyway. I think this is a very suitable use case for a monorepo architecture. Let's set up our root package like this:
+What we need are tools to specify which files can import which other files, and prevent us from accidentally importing them from somewhere else. I think this is a very suitable use case for a monorepo architecture. Let's set up our root package like this:
 
 ```json@my-app/package.json
 {
@@ -203,7 +203,7 @@ And indeed, this would be the `package.json` for `users`, specifying a dependenc
 }
 ```
 
-Not only have we specified the dependency structure we wish to have, we've also put guardrails in place so we don't acidentally violate this structure. In concrete terms, we cannot import the `userDb` directly from our `app` package anymore. If we try, we get an actual error:
+Not only have we specified the dependency structure we wish to have, we've also put guardrails in place so we don't accidentally violate this structure. In concrete terms, we cannot import the `userDb` directly from our `app` package anymore. If we try, we get an actual error:
 
 [error]
 Cannot find module '@my-app/db' or its corresponding type declarations.
