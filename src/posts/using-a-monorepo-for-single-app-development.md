@@ -147,7 +147,7 @@ export async function createUserFormHandler(formData: FormData) {
 }
 ```
 
-Oops, this form handler calls `userDb.createUser` without first validating the users name. The underlaying problem here is that we have no way of managing which files can access which. We can just import anything we need, wherever we need it. This dramatically increases the the chances for the project to become a 'big ball of mud'.
+Oops, this form handler calls `userDb.createUser` without first validating the users name. The underlying problem here is that we have no way of managing which files can access which. We can just import anything we need, wherever we need it. This dramatically increases the the chances for the project to become a 'big ball of mud'.
 
 What we need are tools to specify which files can import which other files, and prevent us from accidentally importing them from somewhere else. I think this is a very suitable use case for a monorepo architecture. Let's set up our root package like this:
 
