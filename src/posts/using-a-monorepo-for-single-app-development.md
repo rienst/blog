@@ -211,4 +211,4 @@ Cannot find module '@my-app/db' or its corresponding type declarations.
 
 ## Conclusion
 
-A monorepo helps you share logic when you're building multiple apps, but it can also be a useful tool for managing dependencies in your codebase. Splitting logic into separate packages helps you see the different parts that make up your app and keeps you from tangling them up acidentally.
+A monorepo helps you share logic when you're building multiple apps, but it can also be a useful tool for managing dependencies within a single application. Splitting logic into separate packages helps you see the different parts that make up your app and protects the boundaries between.
