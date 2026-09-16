@@ -2,9 +2,10 @@ import type { GatsbyConfig } from 'gatsby'
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `blog`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `rienst's blog`,
   },
+  pathPrefix: '/blog'
+  trailingSlash: 'never'
   graphqlTypegen: true,
   plugins: [
     'gatsby-plugin-postcss',
