@@ -1,0 +1,116 @@
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*='language-'],
+pre[class*='language-'] {
+  @apply text-black text-sm bg-transparent text-left whitespace-pre break-normal dark:text-white;
+  word-spacing: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+@media print {
+  code[class*='language-'],
+  pre[class*='language-'] {
+    @apply text-shadow-none;
+  }
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  @apply p-4 overflow-auto;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  @apply bg-neutral-100 dark:bg-neutral-900;
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+  @apply px-1 rounded-sm whitespace-normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-neutral-700 dark:text-neutral-300;
+}
+
+.token.punctuation {
+  @apply text-black dark:text-neutral-200;
+}
+
+.namespace {
+  @apply text-indigo-700 dark:text-indigo-300;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  @apply text-amber-700 dark:text-amber-300;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  @apply text-lime-600 dark:text-lime-300;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  @apply text-rose-700 dark:text-rose-300;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-rose-700 dark:text-rose-300;
+}
+
+.token.class-name,
+.token.function {
+  @apply text-indigo-700 dark:text-indigo-300;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-amber-700 dark:text-amber-300;
+}
+
+.token.important,
+.token.bold {
+  @apply font-bold;
+}
+
+.token.italic {
+  @apply italic;
+}
+
+.token.entity {
+  @apply cursor-help;
+}

@@ -1,0 +1,9 @@
+.plain-html p,
+.plain-html h1,
+.plain-html h2,
+.plain-html h3,
+.plain-html h4,
+.plain-html h5,
+.plain-html h6 {
+  @apply mb-4;
+}
