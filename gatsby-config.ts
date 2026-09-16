@@ -4,8 +4,8 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `rienst's blog`,
   },
-  pathPrefix: '/blog'
-  trailingSlash: 'never'
+  pathPrefix: '/blog',
+  trailingSlash: 'never',
   graphqlTypegen: true,
   plugins: [
     'gatsby-plugin-postcss',
