@@ -6,7 +6,7 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-  @apply text-black text-sm bg-transparent text-left whitespace-pre break-normal dark:text-white;
+  @apply text-black text-xs font-mono bg-transparent text-left whitespace-pre break-normal dark:text-white;
   word-spacing: normal;
   word-wrap: normal;
   line-height: 1.5;
@@ -30,7 +30,7 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
-  @apply p-4 overflow-auto;
+  @apply p-4 rounded-sm overflow-auto;
 }
 
 :not(pre) > code[class*='language-'],
