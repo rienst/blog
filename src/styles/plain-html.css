@@ -1,9 +1,80 @@
 .plain-html p,
+.plain-html table,
+.plain-html ul,
+.plain-html ol,
+.plain-html pre {
+  @apply mb-4;
+}
+
 .plain-html h1,
 .plain-html h2,
 .plain-html h3,
 .plain-html h4,
 .plain-html h5,
 .plain-html h6 {
-  @apply mb-4;
+  @apply mt-12 mb-4;
+}
+
+.plain-html h1,
+.plain-html h2,
+.plain-html h3,
+.plain-html h4,
+.plain-html h5,
+.plain-html h6,
+.plain-text hr {
+  @apply font-medium;
+}
+
+.plain-html h1,
+.plain-html h2 {
+  @apply pb-2 border-b border-neutral-200 dark:border-neutral-600;
+}
+
+.plain-html h1 {
+  @apply text-3xl;
+}
+
+.plain-html h2 {
+  @apply text-2xl;
+}
+
+.plain-html h3 {
+  @apply text-xl;
+}
+
+.plain-html h4 {
+  @apply text-lg;
+}
+
+.plain-html h6 {
+  @apply text-neutral-500 dark:text-neutral-400;
+}
+
+.plain-html hr {
+  @apply my-6 border-t-4 border-neutral-200 dark:border-neutral-600;
+}
+
+.plain-html blockquote {
+  @apply border-l-4 pl-4 text-neutral-500 border-neutral-200 dark:text-neutral-400 dark:border-neutral-600;
+}
+
+.plain-html ul,
+.plain-html ol {
+  @apply pl-8;
+}
+
+.plain-html ul {
+  @apply list-disc;
+}
+
+.plain-html ol {
+  @apply list-decimal;
+}
+
+.plain-html a {
+  @apply underline underline-offset-3 text-blue-600 dark:text-blue-400;
+}
+
+.plain-html table {
+  @apply tabular-nums max-w-full overflow-auto;
 }
