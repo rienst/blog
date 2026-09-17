@@ -27,7 +27,7 @@
 
 .plain-html h1,
 .plain-html h2 {
-  @apply pb-2 border-b border-neutral-200 dark:border-neutral-600;
+  @apply pb-2 border-b border-zinc-200 dark:border-zinc-600;
 }
 
 .plain-html h1 {
@@ -47,15 +47,15 @@
 }
 
 .plain-html h6 {
-  @apply text-neutral-500 dark:text-neutral-400;
+  @apply text-zinc-500 dark:text-zinc-400;
 }
 
 .plain-html hr {
-  @apply my-6 border-t-4 border-neutral-200 dark:border-neutral-600;
+  @apply my-6 border-t-4 border-zinc-200 dark:border-zinc-600;
 }
 
 .plain-html blockquote {
-  @apply border-l-4 pl-4 text-neutral-500 border-neutral-200 dark:text-neutral-400 dark:border-neutral-600;
+  @apply border-l-4 pl-4 text-zinc-500 border-zinc-200 dark:text-zinc-400 dark:border-zinc-600;
 }
 
 .plain-html ul,
@@ -76,5 +76,22 @@
 }
 
 .plain-html table {
-  @apply tabular-nums max-w-full overflow-auto;
+  @apply block tabular-nums max-w-full overflow-auto border-collapse;
+}
+
+.plain-html th,
+.plain-html td {
+  @apply px-3 py-1.5 border border-zinc-300 dark:border-zinc-700;
+}
+
+.plain-html th {
+  @apply text-center font-semibold;
+}
+
+.plain-html td {
+  @apply text-left;
+}
+
+.plain-html tr:nth-child(2n) {
+  @apply bg-zinc-50 dark:bg-zinc-950;
 }

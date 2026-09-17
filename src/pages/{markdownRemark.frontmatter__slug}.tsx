@@ -8,7 +8,7 @@ export default function BlogPostTemplate(props: PageProps<any>) {
   return (
     <PageWrapper>
       <Title>{page.frontmatter.title}</Title>
-      <p className="text-sm text-neutral-500 mb-4 dark:text-neutral-400">
+      <p className="text-sm text-zinc-500 mb-4 dark:text-zinc-400">
         {page.frontmatter.date}
       </p>
       <div
