@@ -1,7 +1,7 @@
 ---
 slug: '/validation'
 date: '2026-10-12'
-title: 'Validation Belongs in the Type'
+title: 'Validation Belongs with the Data'
 ---
 
 Here's an endpoint for placing orders in a webshop:
@@ -59,7 +59,7 @@ void LogEvent(DateTimeOffset timestamp, string summary);
 
 No need to write `if (timestamp.Month == 2 && timestamp.Day == 30)` at the top of every method that takes a date. The type already took care of it. Our `SubmitOrderRequest` offers no such guarantee, so everything that touches it has to wonder.
 
-## Two rules, two homes
+## Place the rules close to the data
 
 Here's the validator behind our endpoint:
 
@@ -193,9 +193,11 @@ public static class SubmitOrderRequestExtensions
 }
 ```
 
+We have "made illegal states unrepresentable" in our code. You can't make a shipping address longer than 200 characters and you can't create an order with over 100 items.
+
 ## But what does the client see?
 
-We traded something away. The old endpoint returned a friendly `ValidationProblem`. Now bad input throws, and an unhandled exception becomes a 500.
+This approach trades usability for robustness. The old endpoint returned a nice 400 Bad Request with the validation errors described in the response body. With our new approach, bad input throws exceptions and the client sees a 500 response.
 
 Since every rule throws `DomainException`, we can translate it to a 400 in one place:
 
