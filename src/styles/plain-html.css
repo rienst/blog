@@ -25,11 +25,6 @@
   @apply font-medium;
 }
 
-.plain-html h1,
-.plain-html h2 {
-  @apply pb-2 border-b border-zinc-200 dark:border-zinc-600;
-}
-
 .plain-html h1 {
   @apply text-3xl;
 }

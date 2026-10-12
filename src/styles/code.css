@@ -30,24 +30,19 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
-  @apply p-4 rounded-lg overflow-auto bg-zinc-100 dark:bg-zinc-900;
-}
-
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  @apply text-sm;
+  @apply p-4 text-sm rounded-lg overflow-auto bg-zinc-100 dark:bg-zinc-900;
 }
 
 /* Inline code */
 :not(pre) > code[class*='language-'] {
-  @apply px-1 py-0.5 rounded-sm whitespace-normal bg-zinc-100 dark:bg-zinc-800;
+  @apply px-1 text-[0.875em] py-0.5 rounded-sm whitespace-normal bg-zinc-100 dark:bg-zinc-800;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  @apply text-zinc-700 dark:text-zinc-300;
+  @apply text-zinc-600 dark:text-zinc-400;
 }
 
 .token.punctuation,
