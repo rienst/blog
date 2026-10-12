@@ -1,7 +1,8 @@
 import * as React from 'react'
-import type { HeadFC, PageProps } from 'gatsby'
+import type { PageProps } from 'gatsby'
 import { PageWrapper } from '../components/page-wrapper'
 import { graphql, Link } from 'gatsby'
+import { useSiteMetadata } from '../use-site-metadata'
 
 export default function Index(props: PageProps<any>) {
   const pages: Page[] = props.data.allMarkdownRemark.edges.map(
@@ -13,8 +14,11 @@ export default function Index(props: PageProps<any>) {
       <ul>
         {pages.map(page => (
           <li>
-            <Link to={page.slug}>
-              {page.title} - {page.date}
+            <Link
+              to={page.slug}
+              className="underline underline-offset-3 text-blue-600 dark:text-blue-400"
+            >
+              {page.title} — {page.date}
             </Link>
           </li>
         ))}
@@ -23,7 +27,9 @@ export default function Index(props: PageProps<any>) {
   )
 }
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export function Head() {
+  return <title>{useSiteMetadata().title}</title>
+}
 
 export const pageQuery = graphql`
   query {

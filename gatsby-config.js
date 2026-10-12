@@ -1,8 +1,6 @@
-import type { GatsbyConfig } from 'gatsby'
-
-const config: GatsbyConfig = {
+module.exports = {
   siteMetadata: {
-    title: `rienst's blog`,
+    title: 'Rien Stenekes',
   },
   pathPrefix: '/blog',
   trailingSlash: 'never',
@@ -24,5 +22,3 @@ const config: GatsbyConfig = {
     },
   ],
 }
-
-export default config

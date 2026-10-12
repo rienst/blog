@@ -1,6 +1,6 @@
 ---
 slug: '/validation'
-date: '2026-10-11'
+date: '2026-10-12'
 title: 'Validation Belongs in the Type'
 ---
 
