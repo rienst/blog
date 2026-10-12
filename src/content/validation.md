@@ -25,7 +25,7 @@ app.MapPost("/orders", async (
 });
 ```
 
-Validate the body, then hand it to the order service. It looks airtight: the only way to place an order is `POST /orders` so every request has to get past the validator first.
+Validate the body, then hand it to the order service. It looks airtight: the only way to place an order is through this `POST /orders` handler so every request has to get past the validator first.
 
 But it's only airtight _today_. What happens when someone:
 
