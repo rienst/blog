@@ -1,10 +1,10 @@
 ---
 slug: '/validation'
 date: '2026-10-12'
-title: 'Validation Belongs with the Data'
+title: 'Turn validators into a domain model'
 ---
 
-Here's an endpoint for placing orders in a webshop:
+This is an endpoint for placing orders in a webshop:
 
 ```cs
 app.MapPost("/orders", async (
@@ -25,23 +25,27 @@ app.MapPost("/orders", async (
 });
 ```
 
-Validate the body, then hand it to the order service. It looks airtight: the only way to place an order is through this `POST /orders` handler so every request has to get past the validator first.
+It validates the body, then sends it off to the order service. It does the job: the only way to place an order is through this `POST /orders` handler which means every request has to get past the validator first.
 
-But it's only airtight _today_. What happens when someone:
+But what happens when someone:
 
-- Adds a `POST /admin/orders` endpoint so admins can order on behalf of customers?
+- Adds a `POST /admin/orders` endpoint so admins can add orders on behalf of customers?
 - Builds a subscription feature that creates orders on a schedule?
-- Bolts a GraphQL API onto the backend?
+- Creates a GraphQL API which allows order placing too?
 
-Each of these creates a `SubmitOrderRequest`, and nothing forces them to validate it. The data lives in the request, but the rules live in a separate class, and the compiler doesn't care whether the two ever meet.
+Each of these additions to the codebase probably calls `new SubmitOrderRequest(...)` somewhere along the way, and nothing forces the developer to validate it before sending it to the order service. The data lives in the request, but the rules live in a separate class, and the compiler doesn't care whether the two ever meet.
 
-## Data and rules belong together
+## Logic should be close to the data it acts upon
 
-This is called **encapsulation**:
+The validator class basically violates the principle of **encapsulation**:
 
-> Bundle data with its rules, so the data can only be used in ways that satisfy them.
+> Bundle data with the rules that belong to it, so the data can only be used in ways that satisfy those rules.
 
-`DateTimeOffset` is a good example. You can't create one with invalid data:
+This same idea is also refered to as:
+
+> Make illegal states unrepresentable
+
+If you don't want to allow something to be in a certain state then you should make it impossible for that thing to be placed in that state. An example of a class that implements this idea is the `DateTimeOffset` class. You can't create an instance of it that's in an invalid state:
 
 ```cs
 DateTimeOffset.Parse("next week");
@@ -51,15 +55,15 @@ new DateTimeOffset(2026, 2, 30, 0, 0, 0, TimeSpan.Zero);
 // Throws ArgumentOutOfRangeException: February 30th doesn't exist
 ```
 
-So any method that accepts a `DateTimeOffset` can trust it:
+So `DateTimeOffset` always represents a **valid** point in time. Any method that accepts one can trust it:
 
 ```cs
-void LogEvent(DateTimeOffset timestamp, string summary);
+void LogEvent(DateTimeOffset timestamp, string eventSummary);
 ```
 
-No need to write `if (timestamp.Month == 2 && timestamp.Day == 30)` at the top of every method that takes a date. The type already took care of it. Our `SubmitOrderRequest` offers no such guarantee, so everything that touches it has to wonder.
+This method doesn't have to worry abouth whether or not the timestamp represents February 30th. The type itself guarantees that it does not. Our `SubmitOrderRequest` doesn't provide such guarantees, so everything that touches it has to remember to use the validator first.
 
-## Place the rules close to the data
+## Turning the validator into a model
 
 Here's the validator behind our endpoint:
 
@@ -78,7 +82,7 @@ public class SubmitOrderRequestValidator : AbstractValidator<SubmitOrderRequest>
 }
 ```
 
-These two rules are different in kind. The first applies to a single value. The second applies to a collection of values, and that matters for where it should live.
+These two rules apply to specific pieces of data inside of `SubmitOrderRequest`. We should move them closer to that data.
 
 ### The shipping address
 
@@ -108,13 +112,13 @@ public record ShippingAddress
 
 (`DomainException` is a plain exception type of our own. More on it below.)
 
-There's now no way to hold a `ShippingAddress` that breaks the rule. It's reusable anywhere in the app, and if someone asks what the rules for an address are, there's exactly one file to open.
+There's now no way to get a `ShippingAddress` that breaks the rule. Anyone can just use it and trust that the data is valid.
 
 ### The order lines
 
-The quantity rule is trickier. No single `OrderLine` knows the total across all lines, so the rule has to live one level up, in whatever owns the lines. That's the order.
+The quantity rule applies to a larger chunk of data. No single `OrderLine` knows the total amount of items across all order lines, so the rule has to live one level up, in whatever owns the lines. That's the order.
 
-`SubmitOrderRequest` is just the shape of incoming JSON. The thing the business actually cares about is an `Order`, and it should be impossible to construct a broken one:
+`SubmitOrderRequest` is just the shape of incoming JSON. Let's not build rules in there. The thing the business actually cares about is an `Order`, and it should be impossible to construct a broken one:
 
 ```cs
 public class Order
@@ -157,9 +161,9 @@ public class Order
 
 The limit is checked in the constructor and in `AddLine`, so an order can't start over the limit or grow past it.
 
-Notice what `Order` _doesn't_ do: it never checks the address length. That's `ShippingAddress`'s job. If the address limit changes, `Order` doesn't change. Each type guards its own piece of the truth.
+Notice that we now see the user-side of the `ShippingAddress` record as well. We don't have to worry about that piece of data here in the `Order` class. If the address limit changes, `Order` doesn't change. Each type guards its own piece of data. We're essentially building a set of small concepts that together form a domain model which we can extend and build upon.
 
-## The simpler endpoint
+## Going back to the endpoint
 
 The handler no longer needs a validator at all:
 
@@ -193,7 +197,7 @@ public static class SubmitOrderRequestExtensions
 }
 ```
 
-We have "made illegal states unrepresentable" in our code. You can't make a shipping address longer than 200 characters and you can't create an order with over 100 items.
+We have _made illegal states unrepresentable_ in our code. You can't make a shipping address longer than 200 characters and you can't create an order with over 100 items.
 
 ## But what does the client see?
 
