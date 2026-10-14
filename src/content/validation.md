@@ -161,7 +161,7 @@ public class Order
 
 The limit is checked in the constructor and in `AddLine`, so an order can't start over the limit or grow past it.
 
-Notice that we now see the user-side of the `ShippingAddress` record as well. We don't have to worry about that piece of data here in the `Order` class. If the address limit changes, `Order` doesn't change. Each type guards its own piece of data. We're essentially building a set of small concepts that together form a domain model which we can extend and build upon.
+Notice that we now see the benefit of the `ShippingAddress` record as well. No need to worry about that piece of data here in the `Order` class. If the address limit changes, `Order` doesn't change. Each type guards its own piece of data. We're essentially building a set of small concepts that together form a domain model which we can extend and build upon.
 
 ## Going back to the endpoint
 
@@ -197,13 +197,13 @@ public static class SubmitOrderRequestExtensions
 }
 ```
 
-We have _made illegal states unrepresentable_ in our code. You can't make a shipping address longer than 200 characters and you can't create an order with over 100 items.
+We have _made illegal states unrepresentable_. You can't make a shipping address longer than 200 characters and you can't create an order with over 100 items. Nonody can forget to apply these rules.
 
-## But what does the client see?
+## Validation errors
 
-This approach trades usability for robustness. The old endpoint returned a nice 400 Bad Request with the validation errors described in the response body. With our new approach, bad input throws exceptions and the client sees a 500 response.
+Up to now, we have ignored a significant feature of the initial endpoint. It returned a nice 400 response with the validation errors described in the response body. With our new approach, bad input throws an exception somewhere and the client gets a 500 back.
 
-Since every rule throws `DomainException`, we can translate it to a 400 in one place:
+To fix this we just need to handle those exceptions better. This is why we set up every rule to throw `DomainException`s so we can translate them into 400 responses from an `IExceptionHandler`:
 
 ```cs
 public class DomainException(string message) : Exception(message);
