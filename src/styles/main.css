@@ -30,7 +30,7 @@ pre {
 /* Code blocks */
 pre {
   padding: 1rem 1rem;
-  background-color: var(--bs-bg-1);
+  background-color: var(--bs-bg-2);
   border-radius: 0.5rem;
 }
 
