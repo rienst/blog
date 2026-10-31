@@ -5,7 +5,6 @@
 
 code,
 pre {
-  color: var(--bs-fg-body);
   word-spacing: normal;
   word-wrap: normal;
   line-height: 1.5;
@@ -29,6 +28,7 @@ pre {
 
 /* Code blocks */
 pre {
+  color: var(--bs-fg-body);
   padding: 1rem 1rem;
   background-color: var(--bs-bg-2);
   border-radius: 0.5rem;
