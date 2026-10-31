@@ -25,7 +25,7 @@ app.MapPost("/orders", async (
 });
 ```
 
-It validates the user input (`SubmitOrderRequeat`) and then sends it off to the order service. The only way to place an order is through this `POST /orders` handler which means every request has to get past the validator first.
+It validates the user input (`SubmitOrderRequest`) and then sends it off to the order service. The only way to place an order is through this `POST /orders` handler which means every request has to get past the validator first.
 
 The problem is that this violates the principle of encapsulation: Hide data in classes and write methods that restrict how that data can be used. Instead, the data lives in `SubmitOrderRequest` and the rules are applied via the validator. Nothing is preventing unvalidated requests from being sent to `SubmitOrder`.
 
