@@ -14,10 +14,7 @@ export default function Index(props: PageProps<any>) {
       <ul>
         {pages.map(page => (
           <li>
-            <Link
-              to={page.slug}
-              className="underline underline-offset-3 text-blue-600 dark:text-blue-400"
-            >
+            <Link to={page.slug}>
               {page.title} — {page.date}
             </Link>
           </li>

@@ -1,7 +1,0 @@
-@import 'tailwindcss';
-@import './plain-html.css';
-@import './code.css';
-
-html {
-  @apply dark:bg-black dark:text-white dark:scheme-dark;
-}

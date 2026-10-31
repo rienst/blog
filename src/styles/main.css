@@ -1,0 +1,123 @@
+.container,
+.prose {
+  max-width: 960px;
+}
+
+code,
+pre {
+  color: var(--bs-fg-body);
+  word-spacing: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+*:not(pre) > code {
+  background-color: var(--bs-bg-2);
+  font-size: 0.925rem;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+@media print {
+  code,
+  pre {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+pre {
+  padding: 1rem 1rem;
+  background-color: var(--bs-bg-1);
+  border-radius: 0.5rem;
+}
+
+.namespace {
+  color: var(--bs-violet-600);
+  @media (prefers-color-scheme: dark) {
+    color: var(--bs-violet-300);
+  }
+}
+
+.token.property,
+.token.tag {
+  color: var(--bs-green-600);
+  @media (prefers-color-scheme: dark) {
+    color: var(--bs-green-300);
+  }
+}
+
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--bs-blue-600);
+  @media (prefers-color-scheme: dark) {
+    color: var(--bs-blue-300);
+  }
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.attr-value {
+  color: var(--bs-blue-700);
+  @media (prefers-color-scheme: dark) {
+    color: var(--bs-blue-200);
+  }
+}
+
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.atrule,
+.token.keyword {
+  color: var(--bs-red-600);
+  @media (prefers-color-scheme: dark) {
+    color: var(--bs-red-300);
+  }
+}
+
+.token.class-name,
+.token.function {
+  color: var(--bs-violet-700);
+  @media (prefers-color-scheme: dark) {
+    color: var(--bs-violet-200);
+  }
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: var(--bs-amber-600);
+  @media (prefers-color-scheme: dark) {
+    color: var(--bs-amber-300);
+  }
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

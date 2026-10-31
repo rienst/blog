@@ -4,16 +4,15 @@ import { useSiteMetadata } from '../use-site-metadata'
 
 export function PageWrapper(props: React.PropsWithChildren) {
   return (
-    <div className="py-8 px-4 max-w-3xl mx-auto sm:px-8 md:py-16">
-      <header className="pb-8 md:pb-16">
-        <Link
-          to="/"
-          className="font-medium text-xl md:text-2xl hover:underline"
-        >
-          {useSiteMetadata().title}
-        </Link>
+    <>
+      <header className="navbar border-bottom bg-0">
+        <div className="container">
+          <Link to="/" className="navbar-brand">
+            {useSiteMetadata().title}
+          </Link>
+        </div>
       </header>
-      <main>{props.children}</main>
-    </div>
+      <main className="container py-12">{props.children}</main>
+    </>
   )
 }

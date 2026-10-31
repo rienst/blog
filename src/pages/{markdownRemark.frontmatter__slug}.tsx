@@ -7,14 +7,11 @@ export default function BlogPostTemplate(props: PageProps<any>) {
   const page: Page = props.data.markdownRemark
   return (
     <PageWrapper>
-      <div className="pb-8">
+      <div className="pb-12">
         <Title>{page.frontmatter.title}</Title>
-        <p>{page.frontmatter.date}</p>
+        <p className="mb-0">{page.frontmatter.date}</p>
       </div>
-      <div
-        className="plain-html"
-        dangerouslySetInnerHTML={{ __html: page.html }}
-      />
+      <div className="prose" dangerouslySetInnerHTML={{ __html: page.html }} />
     </PageWrapper>
   )
 }

@@ -6,7 +6,6 @@ module.exports = {
   trailingSlash: 'never',
   graphqlTypegen: true,
   plugins: [
-    'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
